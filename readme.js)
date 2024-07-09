@@ -1,0 +1,27 @@
+Backend (server.js)
+Express: Cria um servidor web.
+Socket.io: Habilita a comunicação em tempo real entre o cliente e o servidor.
+Servidor HTTP: É necessário para que o Socket.io funcione.
+Socket.io Configuração:
+io.on('connection'): Evento disparado quando um novo cliente se conecta.
+socket.on('chat message'): Evento para receber mensagens de chat e retransmiti-las para todos os clientes conectados.
+socket.on('disconnect'): Evento disparado quando um cliente se desconecta.
+Frontend (public/index.html)
+Formulário de Envio de Mensagens: HTML simples com um campo de entrada e um botão.
+Script de Socket.io:
+Conecta ao servidor Socket.io.
+Envia mensagens ao servidor quando o formulário é submetido.
+Recebe e exibe mensagens do servidor em tempo real.
+Desafio Maior Enfrentado
+Desafio: Escalabilidade em Comunicação em Tempo Real
+
+Quando se lida com um grande número de conexões simultâneas em uma aplicação de comunicação em tempo real, a escalabilidade pode se tornar um desafio significativo. O aumento de usuários pode levar a problemas de desempenho e estabilidade.
+
+Problemas Enfrentados:
+Gerenciamento de Conexões: Manter um grande número de conexões abertas e gerenciar os recursos do servidor.
+Latência: Garantir que a comunicação em tempo real seja realmente em tempo real, minimizando a latência.
+Balanceamento de Carga: Distribuir a carga de trabalho entre vários servidores para evitar sobrecarga em um único servidor.
+Soluções Implementadas:
+Clusters de Servidores: Utilização do módulo cluster do Node.js para criar processos filhos que compartilham o mesmo servidor.
+Escalonamento Horizontal: Implementação de múltiplas instâncias do servidor em diferentes máquinas e uso de balanceadores de carga (como Nginx ou HAProxy) para distribuir as conexões.
+Redis para Pub/Sub: Utilização do Redis como um intermediário de mensagens (Pub/Sub) para compartilhar mensagens entre diferentes instâncias do servidor Socket.io.
